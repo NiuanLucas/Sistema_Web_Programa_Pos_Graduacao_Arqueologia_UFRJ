@@ -20,7 +20,7 @@
 
         $pagina_info = "SELECT * ";
 
-        $pagina_info .= "FROM paginas_modulares ";
+        $pagina_info .= "FROM noticias ";
 
         $pagina_info .= "WHERE pagina_modular_id = {$pagina_id} ";
 

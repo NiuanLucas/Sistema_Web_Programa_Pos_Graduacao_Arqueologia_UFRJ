@@ -51,7 +51,7 @@ use PHPMailer\PHPMailer\Exception;
           echo "Erro ao enviar mensagem: {$mail->ErrorInfo}";
         }
 
-        $inserir = "INSERT INTO contato ";
+        $inserir = "INSERT INTO mensagens ";
         $inserir .= "(nome_completo_contato,email_contato,assunto_contato,mensagem_contato) ";
         $inserir .= "VALUES ";
         $inserir .= "('$nome_completo_contato','$email_contato','$assunto_contato','$mensagem_contato') ";

@@ -4,6 +4,7 @@
 
 <?php require_once "../functions.php";  ?>
 
+<?php require_once "../new_functions.php";  ?>
 
 
 <!DOCTYPE html>
@@ -12,7 +13,7 @@
 
 <head>
 
-  <title> Laboratório de Arqueobotânica e Paisagem – MN/UFRJ  </title>
+  <title>  Programa de Pós-Graduação em Arqueologia – MN/UFRJ  </title>
 
   <meta charset="utf-8" />
 
@@ -57,180 +58,28 @@
 <?php
 
     //adicionar variavel sessão
-
     session_start();    
 
-
-
     // Determinar localidade BR
-
-      setlocale(LC_ALL, 'pt_BR');
-
-
+    setlocale(LC_ALL, 'pt_BR');
 
     //Testando Login
-
-      if ( !isset($_SESSION["user_portal"])) {
-
+    if (!isset($_SESSION["user_portal"])) {
       echo "<script>alert('$_SESSION não iniciada!);</script>";
-
       sleep(5);
-
       header("location: ../../index.php");
-
-      }
-
-
-
-    //Consulta Tabela Usuarios
-
-      if ( isset($_SESSION["user_portal"]) ) {
-
+    }
+    if (isset($_SESSION["user_portal"])){
         $user = $_SESSION["user_portal"];
-
-
-
-        $dados = "SELECT * ";
-
-        $dados .= "FROM usuarios ";
-
-        $dados .= "WHERE usuario_id = '{$user}' ";
-
+        $dados = "SELECT * FROM usuarios WHERE usuario_id = '{$user}' ";
         $dados_usuario = mysqli_query($conecta, $dados);
-
-                if( !$dados_usuario ) {
-
-                die(" Falha na Base de Dados! Header Dash ");
-
-                }
-
-
-
+        if(!$dados_usuario) 
+          die("Erro de Comunicação | Tabela Usuários em Dashboard");
         $dados_usuario = mysqli_fetch_assoc($dados_usuario);
-
-
-
         //$nome = $dados_usuario["nomecompleto"];
-
-
-
-      }
-
-
-
-    // Consulta a Tabela Paginas Fixas
-
-    $tr = "SELECT * ";
-
-    $tr .= "FROM paginas_fixas ORDER BY pagina_id ASC ";
-
-    $consulta_tr = mysqli_query($conecta, $tr);
-
-    if(!$consulta_tr) {
-
-        die("Falha na consulta ao banco Paginas Fixas Header | Paginas Fixas");   
-
     }
 
-
-
-    // Consulta a Tabela Paginas Modulares
-
-    $tr2 = "SELECT * ";
-
-    $tr2 .= "FROM paginas_modulares ORDER BY pagina_modular_titulo ASC ";
-
-    $consulta_tr2 = mysqli_query($conecta, $tr2);
-
-    if(!$consulta_tr2) {
-
-        die("Falha na consulta ao banco Paginas Modulares Header | Paginas Modulares");   
-
-    }
-
-
-
-    // Consulta a Tabela Usuarios
-
-    $tr3 = "SELECT * ";
-
-    $tr3 .= "FROM usuarios ";
-
-    $consulta_tr3 = mysqli_query($conecta, $tr3);
-
-    if(!$consulta_tr3) {
-
-        die("Falha na consulta ao banco Usuarios Header | Usuarios ");   
-
-    }
-
-
-
-        // Consulta a Tabela Slides
-
-    $tr4 = "SELECT * ";
-
-    $tr4 .= "FROM slides ";
-
-    $consulta_tr4 = mysqli_query($conecta, $tr4);
-
-    if(!$consulta_tr4) {
-
-        die("Falha na consulta ao banco Slides Header | Slides");   
-
-    }
-
-
-
-            // Consulta a Tabela Contato
-
-    $tr5 = "SELECT * ";
-
-    $tr5 .= "FROM contato ";
-
-    $consulta_tr5 = mysqli_query($conecta, $tr5);
-
-    if(!$consulta_tr5) {
-
-        die("Falha na consulta ao banco Contato Header | Contato");   
-
-    }
-
-
-
-                // Consulta a Tabela Contato
-
-    $tr6 = "SELECT * ";
-
-    $tr6 .= "FROM cards ORDER BY card_id ASC ";
-
-    $consulta_tr6 = mysqli_query($conecta, $tr6);
-
-    if(!$consulta_tr6) {
-
-        die("Falha na consulta ao banco Cards Header | Cards ");   
-
-    }
-
-
-
-           // Consulta a Tabela Contato
-
-    $tr7 = "SELECT * ";
-
-    $tr7 .= "FROM producao_academica_ufrj";
-
-    $consulta_tr7 = mysqli_query($conecta, $tr7);
-
-    if(!$consulta_tr7) {
-
-        die("Falha na consulta ao banco Cards Header | Producao Academica UFRJ");   
-
-    }
-
-
-
-
+    echo(consultarBancoDeDados($conecta)); 
 
 ?>
 
@@ -286,7 +135,7 @@
 
           <h4 class="font-arial" style="font-size: 20px !important;">
 
-          Laboratório de Arqueobotânica e Paisagem, Museu Nacional, UFRJ
+           Programa de Pós-Graduação em Arqueologia – MN/UFRJ 
 
       	  </h4>
 
@@ -356,76 +205,48 @@
 
           <li class="nav-item">
 
-            <a class="nav-link" href="dash"><i class="fas fa-tools"></i> Painel do Administrador - Laboratório de Arqueobotânica e Paisagem </a>
+            <a class="nav-link" href="dash"><i class="fas fa-tools"></i> Painel do Administrador -  Programa de Pós-Graduação em Arqueologia </a>
 
           </li>
 
 
-
           <?php
-
           }
-
           //Existe Login
-
           else {
-
           ?>  
 
 
-
-
-
           <li class="nav-item">
-
-            <a class="nav-link" href="paginas_fixas.php"><i class="fas fa-file"></i> Páginas fixas</a>
-
+            <a class="nav-link" href="paginas.php"><i class="fas fa-file"></i> Páginas</a>
           </li>
 
-
+          <li class="nav-item">
+            <a class="nav-link" href="subpaginas.php"><i class="far fa-copy"></i> Subpáginas</a>
+          </li>
 
           <li class="nav-item">
-
-            <a class="nav-link" href="paginas_modulares.php"><i class="fas fa-scroll"></i> Notícias</a>
-
+            <a class="nav-link" href="noticias.php"><i class="fas fa-newspaper"></i> Notícias</a>
           </li> 
 
-
-          <!--
-            <li class="nav-item">
-              <a class="nav-link" href="producao_academica.php"><i class="fas fa-file-signature"></i> Produção Acadêmica</a>
-            </li>          
-          -->
-
-
           <li class="nav-item">
-
             <a class="nav-link" href="cards.php"><i class="fas fa-grip-horizontal"></i> Cards</a>
-
           </li>
 
-
-
           <li class="nav-item" >
-
-            <a class="nav-link" href="todos_usuarios.php"><i class="fas fa-users"></i> Todos os usuários</a>
-
+            <a class="nav-link" href="usuarios.php"><i class="fas fa-users"></i> Usuários</a>
           </li>
 
-
-
           <li class="nav-item" >
-
-            <a class="nav-link" href="slides.php"><i class="fas fa-images"></i> Slides </a>
-
+            <a class="nav-link" href="slides.php"><i class="fas fa-images"></i> Slides</a>
           </li>
 
-
-
           <li class="nav-item" >
-
             <a class="nav-link" href="mensagens.php"><i class="fas fa-envelope-open-text"></i> Mensagens</a>
+          </li>
 
+          <li class="nav-item" >
+            <a class="nav-link" href="configuracoes.php"><i class="fas fa-cog"></i> Configurações</a>
           </li>
 
 
@@ -433,10 +254,8 @@
 
 
           <?php
-
-
-
-          } ?>
+          } 
+          ?>
 
 
 

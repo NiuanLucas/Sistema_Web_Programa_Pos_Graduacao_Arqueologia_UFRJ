@@ -14,22 +14,13 @@
 
     <h3 class="h4 m-3 col-0"><i class="fas fa-grip-horizontal"></i> Cards </h3>
 
-
-
     <a href='inserir_cards.php' class="col-0">
-
-      <!--
-    <button type='button' class='btn bg-dark text-white mt-3 ml-3'> <i class="fas fa-plus"></i> Inserir novo Card</button>
-    -->
-
+      <button type='button' class='btn bg-dark text-white mt-3 ml-3'> <i class="fas fa-plus"></i> Inserir novo Card</button>
     </a>      
 
     </div>
 
-
-
   <hr class="my-2">
-
 
 
   <table class="table table-responsive-md table-bordered table-hover mt-3 mb-3 border-0">
@@ -56,7 +47,7 @@
 
     <tbody>
 
-      <?php while($linha = mysqli_fetch_assoc($consulta_tr6)) { ?>
+      <?php while($linha = mysqli_fetch_assoc($consulta_cards)) { ?>
 
       <tr>
 

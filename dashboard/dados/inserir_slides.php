@@ -78,9 +78,9 @@ $texto_var_slide = "";
 
         } else {
 
-            echo "<script> window.location.href = 'paginas_modulares.php'; </script>";
+            echo "<script> window.location.href = 'noticias.php'; </script>";
 
-            //header("Location:paginas_modulares.php");
+            //header("Location:noticias.php");
 
         }
 

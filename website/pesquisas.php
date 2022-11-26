@@ -6,7 +6,7 @@
 
     $tr2 = "SELECT * ";
 
-    $tr2 .= "FROM paginas_modulares ";
+    $tr2 .= "FROM noticias ";
 
     $tr2 .= "WHERE pagina_modular_categoria = 'cursos' ";
 

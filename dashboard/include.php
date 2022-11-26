@@ -8,7 +8,7 @@ define('DB_USER',"root");
 
 define('DB_PASS',"");
 
-define('DB_NAME',"lah_museu_ufrj");
+define('DB_NAME',"ppgarq_museu_ufrj");
 
 define('URL',"https://lap.mn.ufrj.br");
 $url = URL;

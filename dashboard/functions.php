@@ -15,7 +15,7 @@ $slide = $slide;
 } else  {
 
     $pagina_id =  $_GET["pg_id"];
-    $pagina_info = "SELECT * FROM paginas_modulares WHERE pagina_modular_id = {$pagina_id} ";
+    $pagina_info = "SELECT * FROM noticias WHERE pagina_modular_id = {$pagina_id} ";
     $info_pagina = mysqli_query($conecta, $pagina_info);
         if(!$info_pagina) {
         die(" Falha na Base de Dados! Function Pagina Modular Slide");  
@@ -92,7 +92,7 @@ $slide = $slide;
         //////////////////////////////////////////////////////////
         } else  {
             $pagina_id =  $_GET["pg_id"];
-            $pagina_info = "SELECT * FROM paginas_fixas WHERE pagina_id = {$pagina_id} ";
+            $pagina_info = "SELECT * FROM paginas WHERE pagina_id = {$pagina_id} ";
             $info_pagina = mysqli_query($conecta, $pagina_info);
                 if(!$info_pagina) {
                 die(" Falha na Base de Dados! Function Pagina Fixa Slide");  
@@ -172,8 +172,8 @@ $url = URL;
 $conecta = mysqli_connect($servidor, $usuario, $senha, $banco);
 $pagina_id = $_GET["pg_id"];
 
-$pagina_fixa_info = "SELECT * FROM paginas_fixas WHERE pagina_id = {$pagina_id} ";
-$pagina_modular_info = "SELECT * FROM paginas_modulares WHERE pagina_modular_id = {$pagina_id} ";
+$pagina_fixa_info = "SELECT * FROM paginas WHERE pagina_id = {$pagina_id} ";
+$pagina_modular_info = "SELECT * FROM noticias WHERE pagina_modular_id = {$pagina_id} ";
 
 $info_pagina_fixa = mysqli_query($conecta, $pagina_fixa_info );
 if(!$info_pagina_fixa) {
@@ -250,8 +250,8 @@ $url = URL;
 $conecta = mysqli_connect($servidor, $usuario, $senha, $banco);
 $pagina_id = $_GET["pg_id"];
 
-$pagina_fixa_info = "SELECT * FROM paginas_fixas WHERE pagina_id = {$pagina_id} ";
-$pagina_modular_info = "SELECT * FROM paginas_modulares WHERE pagina_modular_id = {$pagina_id} ";
+$pagina_fixa_info = "SELECT * FROM paginas WHERE pagina_id = {$pagina_id} ";
+$pagina_modular_info = "SELECT * FROM noticias WHERE pagina_modular_id = {$pagina_id} ";
 
 $info_pagina_fixa = mysqli_query($conecta, $pagina_fixa_info );
 if(!$info_pagina_fixa) {
@@ -395,7 +395,7 @@ $conecta = $_SERVER["conecta"];
 
 // Consulta a Tabela Slides
     $consultar_card = "SELECT * ";
-    $consultar_card .= "FROM paginas_modulares ";
+    $consultar_card .= "FROM noticias ";
     $consultar_card .= "WHERE  pagina_modular_id = {$card_pagina} ";
     $consulta_card = mysqli_query($conecta, $consultar_card);
     if(!$consulta_card) {
@@ -450,7 +450,7 @@ if($tipo == "card") {
     }
 // Consulta a Tabela Slides
     $consultar_card = "SELECT * ";
-    $consultar_card .= "FROM paginas_modulares ";
+    $consultar_card .= "FROM noticias ";
     $consultar_card .= "WHERE  pagina_modular_id = {$card_pagina} ";
     $consulta_card = mysqli_query($conecta, $consultar_card);
     if(!$consulta_card) {
@@ -461,7 +461,7 @@ if($tipo == "card") {
 
 else if ($tipo == "modular") {
     $consultar_card = "SELECT * ";
-    $consultar_card .= "FROM paginas_modulares ";
+    $consultar_card .= "FROM noticias ";
     $consultar_card .= "WHERE  pagina_modular_id = {$id} ";
     $consulta_card = mysqli_query($conecta, $consultar_card);
     if(!$consulta_card) {
@@ -636,7 +636,7 @@ $pagina_id = $_GET["pg_id"];
 if ($tabela == "pagina_fixa") {
 //Consulta a tabela usuarios
 $pagina_info = "SELECT * ";
-$pagina_info .= "FROM paginas_fixas ";
+$pagina_info .= "FROM paginas ";
 $pagina_info .= "WHERE pagina_id = {$pagina_id} ";
 //ERRO
 $info_pagina = mysqli_query($conecta, $pagina_info);
@@ -653,7 +653,7 @@ $texto_html_pagina = base64_decode($dados_pagina["pagina_conteudo"]);
 else if ($tabela == "pagina_modular") {
 //Consulta a tabela usuarios
 $pagina_info = "SELECT * ";
-$pagina_info .= "FROM paginas_modulares ";
+$pagina_info .= "FROM noticias ";
 $pagina_info .= "WHERE pagina_modular_id = {$pagina_id} ";
 //ERRO
 $info_pagina = mysqli_query($conecta, $pagina_info);
@@ -686,7 +686,7 @@ $pagina_id = $_GET["pg_id"];
 if ($tabela == "pagina_fixa") {
 //Consulta a tabela usuarios
 $pagina_info = "SELECT * ";
-$pagina_info .= "FROM paginas_fixas ";
+$pagina_info .= "FROM paginas ";
 $pagina_info .= "WHERE pagina_id = {$pagina_id} ";
 //ERRO
 $info_pagina = mysqli_query($conecta, $pagina_info);
@@ -703,7 +703,7 @@ $texto_html_pagina = base64_decode($dados_pagina["pagina_conteudo_2"]);
 else if ($tabela == "pagina_modular") {
 //Consulta a tabela usuarios
 $pagina_info = "SELECT * ";
-$pagina_info .= "FROM paginas_modulares ";
+$pagina_info .= "FROM noticias ";
 $pagina_info .= "WHERE pagina_modular_id = {$pagina_id} ";
 //ERRO
 $info_pagina = mysqli_query($conecta, $pagina_info);
@@ -739,7 +739,7 @@ $pagina_id = $_GET["pg_id"];
 if ($tabela == "pagina_fixa") {
 //Consulta a tabela usuarios
 $pagina_info = "SELECT * ";
-$pagina_info .= "FROM paginas_fixas ";
+$pagina_info .= "FROM paginas ";
 $pagina_info .= "WHERE pagina_id = {$pagina_id} ";
 //ERRO
 $info_pagina = mysqli_query($conecta, $pagina_info);
@@ -765,7 +765,7 @@ return array(
 else if ($tabela == "pagina_modular") {
 //Consulta a tabela usuarios
 $pagina_info = "SELECT * ";
-$pagina_info .= "FROM paginas_modulares ";
+$pagina_info .= "FROM noticias ";
 $pagina_info .= "WHERE pagina_modular_id = {$pagina_id} ";
 //ERRO
 $info_pagina = mysqli_query($conecta, $pagina_info);

@@ -133,7 +133,7 @@ $mensagem1 = "";
 
          // Consulta a Tabela Paginas Modulares
         $tr2 = "SELECT * ";
-        $tr2 .= "FROM paginas_modulares ";
+        $tr2 .= "FROM noticias ";
         $tr2 .= "WHERE pagina_modular_categoria = 'noticias' ORDER BY pagina_modular_id ASC";
         $consulta_tr2 = mysqli_query($conecta, $tr2);
         if(!$consulta_tr2) {
