@@ -12,7 +12,7 @@ function consultarBancoDeDados($conecta){
     die("Erro de Comunicação | Tabela Paginas em Dashboard");
     
     // Consulta a Tabela Paginas
-    $subpaginas = "SELECT * FROM subpaginas ORDER BY pagina_id ASC ";
+    $subpaginas = "SELECT * FROM subpaginas ORDER BY subpagina_id ASC ";
     global $consulta_subpaginas;
     $consulta_subpaginas = mysqli_query($conecta, $subpaginas);
     if(!$consulta_subpaginas) 

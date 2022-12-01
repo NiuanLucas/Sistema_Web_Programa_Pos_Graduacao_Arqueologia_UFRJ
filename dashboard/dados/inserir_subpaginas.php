@@ -8,27 +8,27 @@
 
 //INSERIR NO BANCO DE DADOS
 
-    if(isset($_POST["pagina_titulo"])){
+    if(isset($_POST["subpagina_titulo"])){
 
-        $pagina_titulo = $_POST["pagina_titulo"];
+        $subpagina_titulo = $_POST["subpagina_titulo"];
 
-        $pagina_conteudo = base64_encode($_POST["pagina_conteudo"]);
+        $subpagina_conteudo = base64_encode($_POST["subpagina_conteudo"]);
 
-        $pagina_categoria = $_POST["pagina_categoria"];
+        $subpagina_categoria = $_POST["subpagina_categoria"];
 
-        $pagina_descricao = $_POST["pagina_descricao"];
+        $subpagina_descricao = $_POST["subpagina_descricao"];
 
-        $pagina_palavras_chaves = $_POST["pagina_palavras_chaves"];
+        $subpagina_palavras_chaves = $_POST["subpagina_palavras_chaves"];
 
 
 
-        $inserir = "INSERT INTO paginas ";
+        $inserir = "INSERT INTO subpaginas ";
 
-        $inserir .= "(pagina_titulo,pagina_conteudo,pagina_categoria,pagina_descricao,pagina_palavras_chaves) ";
+        $inserir .= "(subpagina_titulo,subpagina_conteudo,subpagina_categoria,subpagina_descricao,subpagina_palavras_chaves) ";
 
         $inserir .= "VALUES ";
 
-        $inserir .= "('$pagina_titulo','$pagina_conteudo','$pagina_categoria','$pagina_descricao','$pagina_palavras_chaves') ";
+        $inserir .= "('$subpagina_titulo','$subpagina_conteudo','$subpagina_categoria','$subpagina_descricao','$subpagina_palavras_chaves') ";
 
 
 
@@ -37,14 +37,13 @@
 
 
         if(!$operacao_inserir){
-
-            die("Erro no Banco Cadastro de Paginas F ");
-
+            echo "Query: ".print_r($inserir);
+            die("Erro no Banco Cadastro de subpaginas");
         } else {
 
-          echo "<script> window.location.href = 'paginas.php'; </script>";
+          echo "<script> window.location.href = 'subpaginas.php'; </script>";
 
-            //header("Location: paginas.php");
+            //header("Location: subpaginas.php");
 
         }
 
@@ -74,7 +73,7 @@
 
 
 
-<form class="mt-4" action="inserir_paginas.php" method="post" accept-charset="utf-8">
+<form class="mt-4" action="inserir_subpaginas.php" method="post" accept-charset="utf-8">
 
 	
 
@@ -82,7 +81,7 @@
 
     <label for="exampleFormControlInput1">Título</label>
 
-    <input required="" type="text" name="pagina_titulo" class="form-control" placeholder="">
+    <input required="" type="text" name="subpagina_titulo" class="form-control" placeholder="">
 
   </div>
 
@@ -92,37 +91,23 @@
 
     <label for="exampleFormControlInput1">Descrição</label>
 
-    <input required="" type="text"   name="pagina_descricao" class="form-control" placeholder="">
+    <input required="" type="text"   name="subpagina_descricao" class="form-control" placeholder="">
 
   </div> 
-
 
 
   <div class="form-group">
 
   <label for="exampleFormControlInput1">Categoria</label>
 
-  <select required="" class="form-control mb-3" name="pagina_categoria">
+  <select required="" class="form-control mb-3" name="subpagina_categoria">
 
-  <option selected=""  disabled="">Selecionar Categoria</option>
+<option selected=""  disabled="">Selecionar Categoria</option>
+<?php while($linha = mysqli_fetch_assoc($consulta_paginas)) { ?>  
+<option value="<?php echo $linha['pagina_id']; ?>"> <?php echo $linha['pagina_titulo']; ?> </option>
+<?php } ?>
 
-  <option value="Home">Home</option>
-
-  <option value="Quem somos">Quem somos</option>
-
-  <option value="Pesquisa">Pesquisa</option>
-
-  <option value="Coleções">Coleções</option>
-
-  <option value="Ensino">Ensino</option>
-
-  <option value="Produção Acadêmica">Produção Acadêmica</option>
-
-  <option value="Difusão do conhecimento">Difusão do conhecimento</option>
-
-  <option value="Contato">Contato</option>
-
-  </select>
+</select>
 
   </div> 
 
@@ -132,7 +117,7 @@
 
     <label for="exampleFormControlInput1">Palavras Chave</label>
 
-    <input required="" type="text" name="pagina_palavras_chaves" class="form-control" placeholder="">
+    <input required="" type="text" name="subpagina_palavras_chaves" class="form-control" placeholder="">
 
   </div>
 
@@ -142,14 +127,14 @@
 
     <label for="exampleFormControlTextarea1 panel-body">Conteudo</label>
 
-    <textarea required="" class="form-control ckeditor" name="pagina_conteudo" rows="5"></textarea>
+    <textarea required="" class="form-control ckeditor" name="subpagina_conteudo" rows="5"></textarea>
 
   </div>
 
 
 
     <script>
-    var editor=CKEDITOR.replace( 'pagina_conteudo',{
+    var editor=CKEDITOR.replace( 'subpagina_conteudo',{
       height: 300,
       extraPlugins : 'filebrowser',
       filebrowserBrowseUrl:'browser.php?type=Images',
@@ -166,7 +151,7 @@
 
 
 
-  <a href='paginas.php'> 
+  <a href='subpaginas.php'> 
 
   <button type='button' class='btn bg-secondary text-white mt-3'>Cancelar</button> 
 
