@@ -12,39 +12,39 @@
 
    //UPDATE TABLE
 
-    if(isset($_POST["pagina_modular_id"])){
+    if(isset($_POST["noticia_id"])){
 
-    	$pagina_modular_id = $_POST["pagina_modular_id"];
+    	$noticia_id = $_POST["noticia_id"];
 
-        $pagina_modular_titulo = $_POST["pagina_modular_titulo"];
+        $noticia_titulo = $_POST["noticia_titulo"];
 
-        $pagina_modular_conteudo = base64_encode($_POST["pagina_modular_conteudo"]);
+        $noticia_conteudo = base64_encode($_POST["noticia_conteudo"]);
 
-        $pagina_modular_conteudo_2 = base64_encode($_POST["pagina_modular_conteudo_2"]);
+        $noticia_conteudo_2 = base64_encode($_POST["noticia_conteudo_2"]);
 
-        $pagina_modular_categoria = $_POST["pagina_modular_categoria"];
+        $noticia_categoria = $_POST["noticia_categoria"];
 
-        $pagina_modular_descricao = $_POST["pagina_modular_descricao"];
+        $noticia_descricao = $_POST["noticia_descricao"];
 
         $data = $_POST["data"];
 
 
 
-        if ( isset($_POST["pagina_modular_slide"]) ) {
+        if ( isset($_POST["noticia_slide"]) ) {
 
-          $pagina_modular_slide = $_POST["pagina_modular_slide"];
+          $noticia_slide = $_POST["noticia_slide"];
 
         } else {
 
-          $pagina_modular_slide = $_POST["pagina_modular_slide_old"];
+          $noticia_slide = $_POST["noticia_slide_old"];
 
         }
 
         
 
-        $pagina_modular_imagem_capa2 = $_POST["pagina_modular_imagem_capa"];
+        $noticia_imagem_capa2 = $_POST["noticia_imagem_capa"];
 
-        $pagina_modular_palavras_chaves = $_POST["pagina_modular_palavras_chaves"];
+        $noticia_palavras_chaves = $_POST["noticia_palavras_chaves"];
 
 
 
@@ -78,7 +78,7 @@
 
         } else {
 
-        $imagem_grande_upload = $pagina_modular_imagem_capa2; 
+        $imagem_grande_upload = $noticia_imagem_capa2; 
 
         }
 
@@ -90,29 +90,29 @@
 
         $atualizar .= "SET ";
 
-        $atualizar .= "pagina_modular_id = '{$pagina_modular_id}', ";
+        $atualizar .= "noticia_id = '{$noticia_id}', ";
 
-        $atualizar .= "pagina_modular_titulo = '{$pagina_modular_titulo}', ";
+        $atualizar .= "noticia_titulo = '{$noticia_titulo}', ";
 
-        $atualizar .= "pagina_modular_conteudo = '{$pagina_modular_conteudo}', ";
+        $atualizar .= "noticia_conteudo = '{$noticia_conteudo}', ";
 
-        $atualizar .= "pagina_modular_conteudo_2 = '{$pagina_modular_conteudo_2}', ";
+        $atualizar .= "noticia_conteudo_2 = '{$noticia_conteudo_2}', ";
 
-        $atualizar .= "pagina_modular_categoria = '{$pagina_modular_categoria}', ";
+        $atualizar .= "noticia_categoria = '{$noticia_categoria}', ";
 
-        $atualizar .= "pagina_modular_descricao = '{$pagina_modular_descricao}', ";
+        $atualizar .= "noticia_descricao = '{$noticia_descricao}', ";
 
-        $atualizar .= "pagina_modular_slide = '{$pagina_modular_slide}', ";
+        $atualizar .= "noticia_slide = '{$noticia_slide}', ";
 
-        $atualizar .= "pagina_modular_palavras_chaves = '{$pagina_modular_palavras_chaves}', ";
+        $atualizar .= "noticia_palavras_chaves = '{$noticia_palavras_chaves}', ";
 
         $atualizar .= "data = '{$data}', ";
 
-        $atualizar .= "pagina_modular_imagem_capa = '{$imagem_grande_upload}' ";
+        $atualizar .= "noticia_imagem_capa = '{$imagem_grande_upload}' ";
 
 
 
-        $atualizar .= "WHERE  pagina_modular_id = {$pagina_modular_id} ";
+        $atualizar .= "WHERE  noticia_id = {$noticia_id} ";
 
 
 
@@ -138,7 +138,7 @@
 
         if( isset($_GET["pg_id"]) ){
 
-        $pagina_modular_id = $_GET["pg_id"];
+        $noticia_id = $_GET["pg_id"];
 
         } else {
 
@@ -154,7 +154,7 @@
 
         $pagina_alterar .= "FROM noticias ";
 
-        $pagina_alterar .= "WHERE pagina_modular_id = {$pagina_modular_id} ";
+        $pagina_alterar .= "WHERE noticia_id = {$noticia_id} ";
 
 
 
@@ -192,7 +192,7 @@
 
 
 
-<form class="mt-4" action="alterar_paginas_modulares.php" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+<form class="mt-4" action="alterar_noticias.php" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 
 
 
@@ -200,7 +200,7 @@
 
     <label for="exampleFormControlInput1">Página ID</label>
 
-    <input required type="text" name="pagina_modular_id" value="<?php echo $dados_pagina['pagina_modular_id']; ?>" class="form-control" placeholder="">
+    <input required type="text" name="noticia_id" value="<?php echo $dados_pagina['noticia_id']; ?>" class="form-control" placeholder="">
 
   </div>
 
@@ -210,7 +210,7 @@
 
     <label for="exampleFormControlInput1">Título</label>
 
-    <input required type="text" name="pagina_modular_titulo" value="<?php echo $dados_pagina['pagina_modular_titulo']; ?>" class="form-control" placeholder="">
+    <input required type="text" name="noticia_titulo" value="<?php echo $dados_pagina['noticia_titulo']; ?>" class="form-control" placeholder="">
 
   </div>
 
@@ -220,7 +220,7 @@
 
     <label for="exampleFormControlInput1">Descrição</label>
 
-    <input required type="text"  value="<?php echo $dados_pagina['pagina_modular_descricao']; ?>" name="pagina_modular_descricao" class="form-control" placeholder="">
+    <input required type="text"  value="<?php echo $dados_pagina['noticia_descricao']; ?>" name="noticia_descricao" class="form-control" placeholder="">
 
     <small class="text-muted mt-0 mb-3"> *Caso seja uma página para a secção "LAP nas mídias", colocar o link externo desejado acima (no campo descrição). </small>
 
@@ -234,7 +234,7 @@
 
     <label for="exampleFormControlInput1">Categoria</label>
 
-    <input required type="text"  value="<?php echo $dados_pagina['pagina_modular_categoria']; ?>" name="pagina_modular_categoria" class="form-control" placeholder="">
+    <input required type="text"  value="<?php echo $dados_pagina['noticia_categoria']; ?>" name="noticia_categoria" class="form-control" placeholder="">
 
   </div>  
 
@@ -244,7 +244,7 @@
 
   <label for="exampleFormControlInput1">Selecionar Slide Anexado</label>
 
-  <select class="form-control " name="pagina_modular_slide">
+  <select class="form-control " name="noticia_slide">
 
   <option selected=""  disabled="">Selecionar Escolher Slide</option>
 
@@ -265,7 +265,7 @@
 
   <div class="form-group d-none">
     <label for="exampleFormControlInput1">Slide ID</label>
-    <input value="<?php echo $dados_pagina['pagina_modular_slide']; ?>" type="text" name="pagina_modular_slide_old" class="form-control" placeholder="">
+    <input value="<?php echo $dados_pagina['noticia_slide']; ?>" type="text" name="noticia_slide_old" class="form-control" placeholder="">
   </div>
 
 
@@ -274,7 +274,7 @@
 
     <label for="exampleFormControlInput1">Image Folder</label>
 
-    <input required value="<?php echo $dados_pagina['pagina_modular_imagem_capa']; ?>" type="text" name="pagina_modular_imagem_capa" class="form-control" placeholder="">
+    <input required value="<?php echo $dados_pagina['noticia_imagem_capa']; ?>" type="text" name="noticia_imagem_capa" class="form-control" placeholder="">
 
   </div>
 
@@ -284,7 +284,7 @@
 
     <label for="exampleFormControlInput1">Palavras Chave</label>
 
-    <input required value="<?php echo $dados_pagina['pagina_modular_palavras_chaves']; ?>" type="text" name="pagina_modular_palavras_chaves" class="form-control" placeholder="">
+    <input required value="<?php echo $dados_pagina['noticia_palavras_chaves']; ?>" type="text" name="noticia_palavras_chaves" class="form-control" placeholder="">
 
   </div>
 
@@ -323,8 +323,8 @@
 
     <label for="exampleFormControlTextarea1">Texto 1 (ao lado do slide/imagem)</label>
 
-    <textarea required  class="form-control ckeditor" name="pagina_modular_conteudo" id="body" rows="5">
-      <?php echo base64_decode($dados_pagina['pagina_modular_conteudo']); ?></textarea>
+    <textarea required  class="form-control ckeditor" name="noticia_conteudo" id="body" rows="5">
+      <?php echo base64_decode($dados_pagina['noticia_conteudo']); ?></textarea>
 
   </div>
 
@@ -334,8 +334,8 @@
 
     <label for="exampleFormControlTextarea1">Texto 2 (parte inferior)</label>
 
-    <textarea required  class="form-control ckeditor" name="pagina_modular_conteudo_2" id="body2" rows="5">
-      <?php echo base64_decode($dados_pagina['pagina_modular_conteudo_2']); ?></textarea>
+    <textarea required  class="form-control ckeditor" name="noticia_conteudo_2" id="body2" rows="5">
+      <?php echo base64_decode($dados_pagina['noticia_conteudo_2']); ?></textarea>
 
   </div>
 
@@ -343,13 +343,13 @@
 
       <script>
 /*
-    CKEDITOR.replace( 'pagina_modular_conteudo', {
+    CKEDITOR.replace( 'noticia_conteudo', {
       //filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
       filebrowserUploadUrl: '/upload.php'
     } );
 
      
-     CKEDITOR.replace( 'pagina_modular_conteudo', {
+     CKEDITOR.replace( 'noticia_conteudo', {
 
       extraPlugins: "imageuploader",
       height: 300,
@@ -360,7 +360,7 @@
     
  
 
-     CKEDITOR.replace( 'pagina_modular_conteudo_2', {
+     CKEDITOR.replace( 'noticia_conteudo_2', {
 
       height: 300,
 

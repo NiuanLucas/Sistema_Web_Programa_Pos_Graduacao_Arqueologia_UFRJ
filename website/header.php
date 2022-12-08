@@ -10,10 +10,7 @@
         }
 
         //Consulta a tabela usuarios
-        $pagina_fixa_info = "SELECT * ";
-        $pagina_fixa_info .= "FROM paginas ";
-        $pagina_fixa_info .= "WHERE pagina_id = {$pagina_id} ";
-
+        $pagina_fixa_info = "SELECT * FROM paginas WHERE pagina_id = {$pagina_id} ";
         $info_pagina_fixa = mysqli_query($conecta, $pagina_fixa_info);
         if(!$info_pagina_fixa) {
         die(" Falha na Base de Dados! Page.php Pagina Fixa ");  
@@ -64,7 +61,7 @@
 				<header class="blog-header mt-3  d-none d-md-block w-100 border-0 mb-2">
 					<div class="row p-0">
 						<div class="d-flex justify-content-center mb-2">
-							<img src="../assets/images/logo_laboratorio_branco_4.png" class="w-50" style="position: relative; top: 0%; left: 27.5%;">	
+							<img src="../assets/images/logo_laboratorio_color_5.png" class="w-50" style="position: relative; top: 0%; left: 27.5%;">	
 							<!-- <img src="../assets/images/logo_museu_ufrj_color.png" class="img-logo"> -->					
 						</div>
 						<div class="float-right d-none d-md-block" style="position: absolute; top: 80%; left: 37.5%;">
@@ -78,9 +75,12 @@
 				</header>
       
 
-				<?php //require_once "navbar_mobile.php";  ?>
-				<?php require_once "new_navbar_desktop.php";  ?></br>
-				<?php require_once "navbar_desktop.php";  ?>
+        <?php //require_once "navbar_desktop.php";  ?>
+				<?php require_once "new_navbar_desktop.php";  ?>
+        <?php //require_once "navbar_mobile.php";  ?>
+        <?php require_once "new_navbar_mobile.php";  ?>
+
+				
 				
 
 

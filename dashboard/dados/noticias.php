@@ -16,7 +16,7 @@
 
 
 
-    <a href='inserir_paginas_modulares.php' class="col-0">
+    <a href='inserir_noticias.php' class="col-0">
 
       <button type='button' class='btn bg-dark text-white mt-3 ml-3'> <i class="fas fa-plus"></i> Inserir nova notícia</button>
 
@@ -101,7 +101,7 @@ echo "</a>";
 
           $tr2 = "SELECT * ";
 
-          $tr2 .= "FROM noticias ORDER BY pagina_modular_titulo ASC ";
+          $tr2 .= "FROM noticias ORDER BY noticia_titulo ASC ";
 
           $consulta_tr2 = mysqli_query($conecta, $tr2);
 
@@ -119,41 +119,33 @@ echo "</a>";
 
       <?php while(  $linha = mysqli_fetch_assoc($consulta_tr2)  ) { ?> 
 
-      <?php if ( $categoria_pagina[$i] == $linha["pagina_modular_categoria"]  ) { ?> 
-
       <tr>
 
+            <th><?php echo $linha["noticia_id"] ?></th>
 
+            <td><?php echo mb_strimwidth($linha["noticia_titulo"], 0, 30, "...")  ?></td>
 
-      
+            <!--<td class="d-none"><?php //echo $linha["noticia_conteudo"] ?></td> 
 
-            <th><?php echo $linha["pagina_modular_id"] ?></th>
+             <td><?php //echo  mb_strimwidth($linha["noticia_descricao"], 0, 18, "...") ?></td>
 
-            <td><?php echo mb_strimwidth($linha["pagina_modular_titulo"], 0, 30, "...")  ?></td>
+            <td><?php //echo $linha["noticia_palavras_chaves"] ?></td>-->
 
-            <!--<td class="d-none"><?php //echo $linha["pagina_modular_conteudo"] ?></td> 
+            <td><?php echo $linha["noticia_categoria"] ?></td>
 
-             <td><?php //echo  mb_strimwidth($linha["pagina_modular_descricao"], 0, 18, "...") ?></td>
-
-            <td><?php //echo $linha["pagina_modular_palavras_chaves"] ?></td>-->
-
-            <td><?php echo $linha["pagina_modular_categoria"] ?></td>
-
-            <td align="center"><img width="150" height="70" src=" <?php echo $linha['pagina_modular_imagem_capa'] ?> " ></td>
+            <td align="center"><img width="150" height="70" src=" <?php echo $linha['noticia_imagem_capa'] ?> " ></td>
 
             <td align="center">
 
-            <a class="m-2" href='alterar_paginas_modulares.php?pg_id=<?php echo $linha["pagina_modular_id"] ?>'><i class="fas fa-edit"></i> Editar </a>
+            <a class="m-2" href='alterar_noticias.php?pg_id=<?php echo $linha["noticia_id"] ?>'><i class="fas fa-edit"></i> Editar </a>
 
-            <a class="m-2" href='excluir_paginas_modulares.php?pg_id=<?php echo $linha["pagina_modular_id"] ?>'><i class="fas fa-times"></i> Excluir </a>
+            <a class="m-2" href='excluir_noticias.php?pg_id=<?php echo $linha["noticia_id"] ?>'><i class="fas fa-times"></i> Excluir </a>
 
             </td>
 
-            
-
       </tr>
 
-    <?php } else { }  ?>  
+
 
     <?php } ?>
 

@@ -15,7 +15,7 @@ $slide = $slide;
 } else  {
 
     $pagina_id =  $_GET["pg_id"];
-    $pagina_info = "SELECT * FROM noticias WHERE pagina_modular_id = {$pagina_id} ";
+    $pagina_info = "SELECT * FROM noticias WHERE noticia_id = {$pagina_id} ";
     $info_pagina = mysqli_query($conecta, $pagina_info);
         if(!$info_pagina) {
         die(" Falha na Base de Dados! Function Pagina Modular Slide");  
@@ -24,7 +24,7 @@ $slide = $slide;
         }
     //DADOS
     $dados_pagina = mysqli_fetch_assoc($info_pagina);        
-    $slide = $dados_pagina["pagina_modular_slide"];
+    $slide = $dados_pagina["noticia_slide"];
     }
 
 //////////////////////////////////////////////////////////
@@ -173,7 +173,7 @@ $conecta = mysqli_connect($servidor, $usuario, $senha, $banco);
 $pagina_id = $_GET["pg_id"];
 
 $pagina_fixa_info = "SELECT * FROM paginas WHERE pagina_id = {$pagina_id} ";
-$pagina_modular_info = "SELECT * FROM noticias WHERE pagina_modular_id = {$pagina_id} ";
+$noticia_info = "SELECT * FROM noticias WHERE noticia_id = {$pagina_id} ";
 
 $info_pagina_fixa = mysqli_query($conecta, $pagina_fixa_info );
 if(!$info_pagina_fixa) {
@@ -181,23 +181,23 @@ die("Falha na Base de Dados! Function OP 1 Fixa  ");
 } else {
 }
 
-$info_pagina_modular = mysqli_query($conecta, $pagina_modular_info );
-if(!$info_pagina_modular) {
+$info_noticia = mysqli_query($conecta, $noticia_info );
+if(!$info_noticia) {
 die("Falha na Base de Dados! Function OP 2 Modular ");  
 } else {
 }
 
 $dados_pagina_fixa = mysqli_fetch_assoc($info_pagina_fixa);  
-$dados_pagina_modular = mysqli_fetch_assoc($info_pagina_modular);  
+$dados_noticia = mysqli_fetch_assoc($info_noticia);  
 
 if($dados_pagina_fixa != NULL){
 $metaOG_Title = $dados_pagina_fixa["pagina_titulo"];
 $metaOG_Description =  $dados_pagina_fixa["pagina_descricao"];
 $metaOG_Image = $dados_pagina_fixa["pagina_imagem_capa"];
 } else {
-$metaOG_Title = $dados_pagina_modular["pagina_modular_titulo"];
-$metaOG_Description =  $dados_pagina_modular["pagina_modular_descricao"];
-$metaOG_Image = $dados_pagina_modular["pagina_modular_imagem_capa"];
+$metaOG_Title = $dados_noticia["noticia_titulo"];
+$metaOG_Description =  $dados_noticia["noticia_descricao"];
+$metaOG_Image = $dados_noticia["noticia_imagem_capa"];
 }
 
 $url      = "//" . $_SERVER['HTTP_HOST'];
@@ -251,7 +251,7 @@ $conecta = mysqli_connect($servidor, $usuario, $senha, $banco);
 $pagina_id = $_GET["pg_id"];
 
 $pagina_fixa_info = "SELECT * FROM paginas WHERE pagina_id = {$pagina_id} ";
-$pagina_modular_info = "SELECT * FROM noticias WHERE pagina_modular_id = {$pagina_id} ";
+$noticia_info = "SELECT * FROM noticias WHERE noticia_id = {$pagina_id} ";
 
 $info_pagina_fixa = mysqli_query($conecta, $pagina_fixa_info );
 if(!$info_pagina_fixa) {
@@ -259,20 +259,20 @@ die("Falha na Base de Dados! Function OP 1 Fixa  ");
 } else {
 }
 
-$info_pagina_modular = mysqli_query($conecta, $pagina_modular_info );
-if(!$info_pagina_modular) {
+$info_noticia = mysqli_query($conecta, $noticia_info );
+if(!$info_noticia) {
 die("Falha na Base de Dados! Function OP 2 Modular ");  
 } else {
 }
 
 $dados_pagina_fixa = mysqli_fetch_assoc($info_pagina_fixa);  
-$dados_pagina_modular = mysqli_fetch_assoc($info_pagina_modular);  
+$dados_noticia = mysqli_fetch_assoc($info_noticia);  
 
 if($dados_pagina_fixa != NULL){
 $metaOG_Image = $dados_pagina_fixa["pagina_imagem_capa"];
 } else {
 
-$metaOG_Image = $dados_pagina_modular["pagina_modular_imagem_capa"];
+$metaOG_Image = $dados_noticia["noticia_imagem_capa"];
 }
 
 $url = "http://" . $_SERVER['HTTP_HOST'];
@@ -396,7 +396,7 @@ $conecta = $_SERVER["conecta"];
 // Consulta a Tabela Slides
     $consultar_card = "SELECT * ";
     $consultar_card .= "FROM noticias ";
-    $consultar_card .= "WHERE  pagina_modular_id = {$card_pagina} ";
+    $consultar_card .= "WHERE  noticia_id = {$card_pagina} ";
     $consulta_card = mysqli_query($conecta, $consultar_card);
     if(!$consulta_card) {
         die("</br>");  
@@ -409,16 +409,16 @@ $conecta = $_SERVER["conecta"];
 
     "<div class='col-sm-7 mb-4 mt-3 border-0'>
         <div class='card'>
-          <img class='card-img-top imag-card' src='"  .$folder.$linha5['pagina_modular_imagem_capa']. "'>
+          <img class='card-img-top imag-card' src='"  .$folder.$linha5['noticia_imagem_capa']. "'>
           <div class='card-body'>
             <h6 class='card-title-sub'> " .date('d/m/Y', strtotime($linha5["data"])).  " </h6>
-            <h5 class='card-title'>" .$linha5['pagina_modular_titulo']. "</h5>";
+            <h5 class='card-title'>" .$linha5['noticia_titulo']. "</h5>";
 
-            if ($linha5['pagina_modular_categoria'] == 'midias' ) {
-                $texto_html_card .=   "<a  target='_blank' href=' " .$linha5['pagina_modular_descricao']. " '> Saiba mais </a>";
+            if ($linha5['noticia_categoria'] == 'midias' ) {
+                $texto_html_card .=   "<a  target='_blank' href=' " .$linha5['noticia_descricao']. " '> Saiba mais </a>";
             } else {
-                $texto_html_card .= "<p class='card-text'> " .$linha5['pagina_modular_descricao']. " </p>";
-                $texto_html_card .=  "<a  href=' " .$caminho.$linha5['pagina_modular_id']. " '> Saiba mais </a>";
+                $texto_html_card .= "<p class='card-text'> " .$linha5['noticia_descricao']. " </p>";
+                $texto_html_card .=  "<a  href=' " .$caminho.$linha5['noticia_id']. " '> Saiba mais </a>";
             }
 
 
@@ -451,7 +451,7 @@ if($tipo == "card") {
 // Consulta a Tabela Slides
     $consultar_card = "SELECT * ";
     $consultar_card .= "FROM noticias ";
-    $consultar_card .= "WHERE  pagina_modular_id = {$card_pagina} ";
+    $consultar_card .= "WHERE  noticia_id = {$card_pagina} ";
     $consulta_card = mysqli_query($conecta, $consultar_card);
     if(!$consulta_card) {
         die("");  
@@ -462,7 +462,7 @@ if($tipo == "card") {
 else if ($tipo == "modular") {
     $consultar_card = "SELECT * ";
     $consultar_card .= "FROM noticias ";
-    $consultar_card .= "WHERE  pagina_modular_id = {$id} ";
+    $consultar_card .= "WHERE  noticia_id = {$id} ";
     $consulta_card = mysqli_query($conecta, $consultar_card);
     if(!$consulta_card) {
         die("</br>");  
@@ -480,18 +480,18 @@ else {}
     "<div class='col-sm-4 mb-3 mt-0  border-0'>
         <div class='card'>";
 
-            if ($linha5['pagina_modular_categoria'] == ("midias") or $linha5['pagina_modular_categoria'] == ("videos")) {
-                $texto_html_card .=   "<a style='text-decoration: none;'  target='_blank' href=' " .$linha5['pagina_modular_descricao']. " '> ";
+            if ($linha5['noticia_categoria'] == ("midias") or $linha5['noticia_categoria'] == ("videos")) {
+                $texto_html_card .=   "<a style='text-decoration: none;'  target='_blank' href=' " .$linha5['noticia_descricao']. " '> ";
 
             } else  {
-                $texto_html_card .=  "<a style='text-decoration: none;' target='_self' href=' " .$caminho.$linha5['pagina_modular_id']. " '> ";
+                $texto_html_card .=  "<a style='text-decoration: none;' target='_self' href=' " .$caminho.$linha5['noticia_id']. " '> ";
 
             }
 
-            $texto_html_card .= "<img class='card-img-top imag-card w-100' src='" .$folder.$linha5['pagina_modular_imagem_capa']. "'>
+            $texto_html_card .= "<img class='card-img-top imag-card w-100' src='" .$folder.$linha5['noticia_imagem_capa']. "'>
           <div class='card-body'>
             <h6 class='card-title-sub'> " .date('d/m/Y', strtotime($linha5["data"])).  "  </h6>
-             <h5 class='card-title'>" .$linha5['pagina_modular_titulo']. "</h5>";
+             <h5 class='card-title'>" .$linha5['noticia_titulo']. "</h5>";
 
             $texto_html_card .= "
           </div>
@@ -650,11 +650,11 @@ $dados_pagina = mysqli_fetch_assoc($info_pagina);
 $texto_html_pagina = base64_decode($dados_pagina["pagina_conteudo"]);
 }  
 
-else if ($tabela == "pagina_modular") {
+else if ($tabela == "noticia") {
 //Consulta a tabela usuarios
 $pagina_info = "SELECT * ";
 $pagina_info .= "FROM noticias ";
-$pagina_info .= "WHERE pagina_modular_id = {$pagina_id} ";
+$pagina_info .= "WHERE noticia_id = {$pagina_id} ";
 //ERRO
 $info_pagina = mysqli_query($conecta, $pagina_info);
 if(!$info_pagina) {
@@ -664,7 +664,7 @@ die(" Falha na Base de Dados! Function Pagina Modular ");
 }
 //DADOS
 $dados_pagina = mysqli_fetch_assoc($info_pagina);        
-$texto_html_pagina = base64_decode($dados_pagina["pagina_modular_conteudo"]);
+$texto_html_pagina = base64_decode($dados_pagina["noticia_conteudo"]);
 }  
 
 else {}
@@ -700,11 +700,11 @@ $dados_pagina = mysqli_fetch_assoc($info_pagina);
 $texto_html_pagina = base64_decode($dados_pagina["pagina_conteudo_2"]);
 }  
 
-else if ($tabela == "pagina_modular") {
+else if ($tabela == "noticia") {
 //Consulta a tabela usuarios
 $pagina_info = "SELECT * ";
 $pagina_info .= "FROM noticias ";
-$pagina_info .= "WHERE pagina_modular_id = {$pagina_id} ";
+$pagina_info .= "WHERE noticia_id = {$pagina_id} ";
 //ERRO
 $info_pagina = mysqli_query($conecta, $pagina_info);
 if(!$info_pagina) {
@@ -714,7 +714,7 @@ die(" Falha na Base de Dados! Function Pagina Modular ");
 }
 //DADOS
 $dados_pagina = mysqli_fetch_assoc($info_pagina);        
-$texto_html_pagina = base64_decode($dados_pagina["pagina_modular_conteudo_2"]);
+$texto_html_pagina = base64_decode($dados_pagina["noticia_conteudo_2"]);
 }  
 
 else {}
@@ -762,11 +762,11 @@ return array(
 
 }  
 
-else if ($tabela == "pagina_modular") {
+else if ($tabela == "noticia") {
 //Consulta a tabela usuarios
 $pagina_info = "SELECT * ";
 $pagina_info .= "FROM noticias ";
-$pagina_info .= "WHERE pagina_modular_id = {$pagina_id} ";
+$pagina_info .= "WHERE noticia_id = {$pagina_id} ";
 //ERRO
 $info_pagina = mysqli_query($conecta, $pagina_info);
 if(!$info_pagina) {
@@ -779,16 +779,16 @@ die(" Falha na Base de Dados! Function Pagina Modular ");
 $dados_pagina = mysqli_fetch_assoc($info_pagina);
 
 return  array(
-    $dados_pagina["pagina_modular_id"], 
-    $dados_pagina["pagina_modular_titulo"], 
-    base64_decode($dados_pagina["pagina_modular_conteudo"]),
-    base64_decode($dados_pagina["pagina_modular_conteudo_2"]),
-    $dados_pagina["pagina_modular_categoria"],  
-    $dados_pagina["pagina_modular_descricao"],
-    $dados_pagina["pagina_modular_palavras_chaves"],
-    $dados_pagina["pagina_modular_imagem_capa"],
+    $dados_pagina["noticia_id"], 
+    $dados_pagina["noticia_titulo"], 
+    base64_decode($dados_pagina["noticia_conteudo"]),
+    base64_decode($dados_pagina["noticia_conteudo_2"]),
+    $dados_pagina["noticia_categoria"],  
+    $dados_pagina["noticia_descricao"],
+    $dados_pagina["noticia_palavras_chaves"],
+    $dados_pagina["noticia_imagem_capa"],
     $dados_pagina["data"],
-    $dados_pagina["pagina_modular_slide"]
+    $dados_pagina["noticia_slide"]
 );
    
 }

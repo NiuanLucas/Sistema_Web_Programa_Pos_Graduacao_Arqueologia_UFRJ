@@ -1,3 +1,10 @@
+/* Variaveis  */
+:root {
+	--bg-color:rgb(126, 44, 12);
+	--background-image-color: rgba(235, 160, 79, 0.45);
+	--background-image-cover: rgba(235, 160, 79, 0.65);
+	--color-text: #471a0b;
+  }
 
 .image-slide-fix {
 	object-fit: contain;
@@ -95,7 +102,7 @@ li {
 
 
 .text-lah { 
-color: #171760;
+color: var(--color-text) !important;
 }
 
 .img-invert {
@@ -286,8 +293,8 @@ z-index: 10;
 
     0%{     
     opacity: 1;
-    background-image: url("../images/slide_1.jpg"), linear-gradient(180deg, rgba(169, 165, 230, 0.25), rgba(171, 165, 230, 0.35), rgba(171, 165, 230, 0.75), rgba(180, 174, 243, 0.9), #fff);
-	background-blend-mode: screen;}
+    background-image: url("../images/slide_4.jpg"), linear-gradient(180deg, var(--background-image-cover), #fff);
+	background-blend-mode: overlay;}
 /*
     33.5%{     
     opacity: 1;
@@ -299,10 +306,12 @@ z-index: 10;
     background-image: url("../images/slide_3.jpg"), linear-gradient(180deg,  rgba(230, 205, 165,0.65), rgba(230, 205, 165,0.75), rgba(230, 205, 165,0.9), rgba(255,255,255,0.9), #fff);
 	background-blend-mode: screen;}
 */
-    100%{     
+
+100%{     
     opacity: 1;
-    background-image: url("../images/slide_1.jpg"), linear-gradient(180deg, rgba(169, 165, 230, 0.25), rgba(171, 165, 230, 0.35), rgba(171, 165, 230, 0.75),  rgba(187, 180, 248, 0.9), #fff);
-	background-blend-mode: screen;}
+    background-image: url("../images/slide_4.jpg"), linear-gradient(180deg, var(--background-image-cover), #fff);
+	background-blend-mode: overlay;} 
+
      
 }
 
@@ -310,7 +319,7 @@ z-index: 10;
 /* ----------------------- PALETA DE CORES --------------------- */
 
 .bg-dark {
-	background-color: rgb(0, 0, 80) !important;
+	background-color: var(--bg-color) !important;
 }
 
 .bg-lah {
@@ -323,16 +332,6 @@ z-index: 10;
 
 .bg-color-1 {
 background-color: rgba(217,217,217) !important;
-}
-
-.bg-color-2 {
-background-color: rgb(40, 60, 100) !important;
-}
-.bg-color-2-dark {
-background-color: rgb(30, 30, 70) !important;
-}
-.text-color-2{
-	color: rgb(40, 40, 100) !important; 
 }
 
 .bg-color-3 {
@@ -377,8 +376,8 @@ background-color: rgba(150,190,15) !important;
     
 	/*background-image: url("https://images.pexels.com/photos/4356144/pexels-photo-4356144.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260");*/
 	background-image: url("../images/background_image.jpg");
-    background-color: rgba(175, 165, 230, 0.65);
-  	background-blend-mode: lighten;
+    background-color:  var(--background-image-color);
+  	background-blend-mode: overlay; 
 	background-position: center;
 	background-size: cover;
 	background-attachment: fixed;
@@ -520,11 +519,11 @@ text-transform: uppercase;
 
 #menu, 
 #toggle-menu {
-background-color: rgb(0, 15, 80) !important;
+background-color: var(--bg-color) !important;
 }
 
 #menu .sub-menu a {
-color: rgba(30, 30, 70) !important;
+color:var(--bg-color) !important;
 text-shadow: 0px !important;
 } 
 

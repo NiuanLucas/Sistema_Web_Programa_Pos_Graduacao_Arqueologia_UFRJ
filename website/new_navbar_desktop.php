@@ -22,18 +22,18 @@
 
 			<?php if($tamanho_consulta_subpaginas_navbar > 0) { ?>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="page.php?pg_id=3" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				<a class="nav-link dropdown-toggle" href="page.php?pg_id=<?php echo $linha["pagina_id"] ?>" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<?php echo $linha["pagina_titulo"] ?> </a>
 				<ul class="dropdown-menu hover-drop " aria-labelledby="navbarDropdown">
 				<?php while($sublinha = mysqli_fetch_assoc($consulta_subpaginas_navbar)) { ?>
-						<li><a class="dropdown-item" target="_self" href="#"><?php echo $sublinha["subpagina_titulo"] ?> </a></li>
+						<li><a class="dropdown-item" target="_self" href="subpage.php?pg_id=<?php echo $sublinha["subpagina_id"] ?>"><?php echo $sublinha["subpagina_titulo"] ?> </a></li>
 				<?php } ?> 
 				</ul>
 			</li>
 
 			<?php } else { ?>
 			<li class="nav-item">
-				<a class="nav-link" target="_self" href="page.php?pg_id=2"> <?php echo $linha["pagina_titulo"] ?> </a>
+				<a class="nav-link" target="_self" href="page.php?pg_id=<?php echo $linha["pagina_id"] ?>"> <?php echo $linha["pagina_titulo"] ?> </a>
 			</li>
 			<?php }  ?>
 

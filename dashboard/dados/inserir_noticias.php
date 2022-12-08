@@ -8,21 +8,21 @@
 
 //INSERIR NO BANCO DE DADOS
 
-    if(isset($_POST["pagina_modular_titulo"])){
+    if(isset($_POST["noticia_titulo"])){
 
-        $pagina_modular_titulo = $_POST["pagina_modular_titulo"];
+        $noticia_titulo = $_POST["noticia_titulo"];
 
-        $pagina_modular_conteudo = base64_encode($_POST["pagina_modular_conteudo"]);
+        $noticia_conteudo = base64_encode($_POST["noticia_conteudo"]);
 
-        $pagina_modular_conteudo_2 = base64_encode($_POST["pagina_modular_conteudo_2"]);
+        $noticia_conteudo_2 = base64_encode($_POST["noticia_conteudo_2"]);
 
-        $pagina_modular_categoria = $_POST["pagina_modular_categoria"];
+        $noticia_categoria = $_POST["noticia_categoria"];
 
-        $pagina_modular_descricao = $_POST["pagina_modular_descricao"];
+        $noticia_descricao = $_POST["noticia_descricao"];
 
-        $pagina_modular_palavras_chaves = $_POST["pagina_modular_palavras_chaves"];
+        $noticia_palavras_chaves = $_POST["noticia_palavras_chaves"];
 
-        $pagina_modular_slide = $_POST["pagina_modular_slide"];
+        $noticia_slide = $_POST["noticia_slide"];
 
         $data = $_POST["data"];
 
@@ -52,11 +52,11 @@
 
         $inserir = "INSERT INTO noticias ";
 
-        $inserir .= "(pagina_modular_titulo,pagina_modular_conteudo,pagina_modular_conteudo_2,pagina_modular_categoria,pagina_modular_descricao,pagina_modular_palavras_chaves,pagina_modular_slide,data,pagina_modular_imagem_capa) ";
+        $inserir .= "(noticia_titulo,noticia_conteudo,noticia_conteudo_2,noticia_categoria,noticia_descricao,noticia_palavras_chaves,noticia_slide,data,noticia_imagem_capa) ";
 
         $inserir .= "VALUES ";
 
-        $inserir .= "('$pagina_modular_titulo','$pagina_modular_conteudo','$pagina_modular_conteudo_2','$pagina_modular_categoria','$pagina_modular_descricao','$pagina_modular_palavras_chaves','$pagina_modular_slide','$data','$imagem_grande_upload') ";
+        $inserir .= "('$noticia_titulo','$noticia_conteudo','$noticia_conteudo_2','$noticia_categoria','$noticia_descricao','$noticia_palavras_chaves','$noticia_slide','$data','$imagem_grande_upload') ";
 
 
 
@@ -102,7 +102,7 @@
 
 
 
-<form class="mt-4" action="inserir_paginas_modulares.php" method="post" enctype="multipart/form-data" accept-charset="utf-8">
+<form class="mt-4" action="inserir_noticias.php" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 
 
 
@@ -110,7 +110,7 @@
 
     <label for="exampleFormControlInput1">Título</label>
 
-    <input required="" type="text" name="pagina_modular_titulo" class="form-control" placeholder="">
+    <input required="" type="text" name="noticia_titulo" class="form-control" placeholder="">
 
   </div>
 
@@ -120,7 +120,7 @@
 
     <label for="exampleFormControlInput1">Descrição</label>
 
-    <input required="" type="text" name="pagina_modular_descricao" class="form-control" placeholder="">
+    <input required="" type="text" name="noticia_descricao" class="form-control" placeholder="">
 
       <small class="text-muted mt-0 mb-3"> *Caso seja uma página para a secção "LAP nas mídias", colocar o link externo desejado acima (no campo descrição). </small>
 
@@ -132,7 +132,7 @@
 
   <label for="exampleFormControlInput1">Selecionar Slide Anexado</label>
 
-  <select required="" class="form-control " name="pagina_modular_slide">
+  <select required="" class="form-control " name="noticia_slide">
 
   <option selected=""  disabled="">Selecionar Escolher Slide</option>
 
@@ -158,7 +158,7 @@
 
   <label for="exampleFormControlInput1">Categoria</label>
 
-  <select required="" class="form-control mb-3" name="pagina_modular_categoria">
+  <select required="" class="form-control mb-3" name="noticia_categoria">
 
   <option selected=""  disabled="">Selecionar Categoria</option>
 
@@ -192,7 +192,7 @@
 
     <label required="" for="exampleFormControlInput1">Palavras Chave</label>
 
-    <input type="text" name="pagina_modular_palavras_chaves" class="form-control" placeholder="">
+    <input type="text" name="noticia_palavras_chaves" class="form-control" placeholder="">
 
   </div>
 
@@ -226,7 +226,7 @@
 
     <label for="exampleFormControlTextarea1">Texto 1 (ao lado do slide/imagem)</label>
 
-    <textarea  required="" class="form-control ckeditor" name="pagina_modular_conteudo" rows="5"></textarea>
+    <textarea  required="" class="form-control ckeditor" name="noticia_conteudo" rows="5"></textarea>
 
   </div>
 
@@ -236,7 +236,7 @@
 
     <label for="exampleFormControlTextarea1">Texto 2 (parte inferior)</label>
 
-    <textarea  required="" class="form-control ckeditor" name="pagina_modular_conteudo_2" rows="5"></textarea>
+    <textarea  required="" class="form-control ckeditor" name="noticia_conteudo_2" rows="5"></textarea>
 
   </div>
 
@@ -244,7 +244,7 @@
 
     <script>
 
-     CKEDITOR.replace( 'pagina_modular_conteudo', {
+     CKEDITOR.replace( 'noticia_conteudo', {
 
       height: 300,
 
@@ -260,7 +260,7 @@
 
     <script>
 
-     CKEDITOR.replace( 'pagina_modular_conteudo_2', {
+     CKEDITOR.replace( 'noticia_conteudo_2', {
 
       height: 300,
 

@@ -23,7 +23,7 @@
   <div class="container text-justify mt-3 mb-3 ">
         <div class="row">
 
-          <div class="col-sm-6" style="background-color: rgb(10,10,70) !important;">
+          <div class="col-sm-6" style="background-color: var(--bg-color) !important;">
           
             <h1 class="text-white"><b><?php echo $dados_pagina_fixa["pagina_titulo"];?></b></h1>
             <p class="" style="color: white !important; font-size: 13px !important; ">

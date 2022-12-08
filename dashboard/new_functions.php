@@ -19,7 +19,7 @@ function consultarBancoDeDados($conecta){
         die("Erro de Comunicação | Tabela Subpaginas em Dashboard"); 
 
     // Consulta a Tabela Noticias
-    $noticias = "SELECT * FROM noticias ORDER BY pagina_modular_titulo ASC ";
+    $noticias = "SELECT * FROM noticias ORDER BY noticia_titulo ASC ";
     global $consulta_noticias;
     $consulta_noticias = mysqli_query($conecta, $noticias);
     if(!$consulta_noticias) 

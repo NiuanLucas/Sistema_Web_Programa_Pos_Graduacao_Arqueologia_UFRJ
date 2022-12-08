@@ -277,11 +277,11 @@
 
 
 
-<div class="form-group d-none">
+<div class="form-group">
 
   <label for="exampleFormControlInput1">Image Folder</label>
 
-  <input required value="<?php echo $dados_pagina['subpagina_imagem_capa']; ?>" type="text" name="subpagina_imagem_capa" class="form-control" placeholder="">
+  <input value="<?php echo $dados_pagina['subpagina_imagem_capa']; ?>" type="text" name="subpagina_imagem_capa" class="form-control" placeholder="">
 
 </div>
 
@@ -294,7 +294,7 @@
   </div>
 
 
-  <div class="form-group">
+  <div class="form-group d-none">
 
     <input type="hidden" name="MAX_FILE_SIZE" value="6000000">
 

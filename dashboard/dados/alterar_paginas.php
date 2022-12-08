@@ -263,7 +263,7 @@
 
   <label for="exampleFormControlInput1">Image Folder</label>
 
-  <input required value="<?php echo $dados_pagina['pagina_imagem_capa']; ?>" type="text" name="pagina_imagem_capa" class="form-control" placeholder="">
+  <input value="<?php echo $dados_pagina['pagina_imagem_capa']; ?>" type="text" name="pagina_imagem_capa" class="form-control" placeholder="">
 
 </div>
 
